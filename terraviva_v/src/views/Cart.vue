@@ -32,7 +32,7 @@
             <div class="column is-12 box">
                 <h2 class="subtitle">Resumo</h2>
 
-                <strong>${{ cartTotalPrice.toFixed(2) }}</strong>, {{ cartTotalLength }} items
+                <strong>R${{ cartTotalPrice.toFixed(2) }}</strong>, {{ cartTotalLength }} items
 
                 <hr>
 

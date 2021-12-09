@@ -2,7 +2,7 @@
   <div id="wrapper">
     <nav class="navbar is-transparent">
       <div class="navbar-brand">
-        <router-link to="/" class="navbar-item" id="custom-logo">terra<strong>viva</strong></router-link>
+        <router-link to="/" class="navbar-item" id="custom-logo">&nbsp;&nbsp;&nbsp;terra<strong>viva</strong></router-link>
 
         <a class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu" @click="showMobileMenu = !showMobileMenu">
           <span aria-hidden="true"></span>
@@ -33,8 +33,8 @@
         </div>
 
         <div class="navbar-end">
-          <router-link to="/legumes" class="navbar-item">Legumes</router-link>
-          <router-link to="/frutas" class="navbar-item">Frutas</router-link>
+          <router-link to="/legumes" class="navbar-item" id="custom-hover">Legumes</router-link>
+          <router-link to="/frutas" class="navbar-item" id="custom-hover">Frutas</router-link>
 
           <div class="navbar-item">
             <div class="buttons">
@@ -46,10 +46,10 @@
                 <router-link to="/log-in" class="button is-success is-outlined">Login</router-link>
               </template>
 
-              <router-link to="/cart" class="button is-success">
+              <router-link to="/cart" class="button is-success" id="custom-cart">
                 <span class="icon"><i class="fas fa-shopping-cart"></i></span>
                 <span>Carrinho ({{ cartTotalLength }})</span>
-              </router-link>
+              </router-link>              
             </div>
           </div>
         </div>
@@ -63,10 +63,47 @@
     <section class="section">
       <router-view/>
     </section>
-
     
     <footer class="footer" id="custom-footer">
-      <!-- -->      
+      <div class="custom-footer-wrapper">
+        <div class="custom-footer-box a">
+          <div>
+            <p id="custom-logo-footer">terra<strong id="custom-strong-footer">viva</strong></p>
+          </div> 
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              Duis scelerisque tempus eros, at auctor mauris porta id. 
+              Donec venenatis eros in sapien tempus, sed pulvinar sapien egestas. 
+              Integer eu euismod est.
+            </p>
+          </div>         
+        </div>
+        <div class="custom-footer-box b">
+          <div>
+            <p id="custom-logo">categorias</p>
+            <ul>
+              <li>&nbsp;Link #1</li>
+              <li>&nbsp;Link #2</li>
+              <li>&nbsp;Link #3</li>
+              <li>&nbsp;Link #4</li>
+              <li>&nbsp;Link #5</li>
+            </ul>
+          </div>
+        </div>
+        <div class="custom-footer-box c">
+          <div>
+            <p id="custom-logo">links</p>
+            <ul>
+              <li>&nbsp;Link #1</li>
+              <li>&nbsp;Link #2</li>
+              <li>&nbsp;Link #3</li>
+              <li>&nbsp;Link #4</li>
+              <li>&nbsp;Link #5</li>              
+            </ul>
+          </div>
+        </div>        
+      </div>
     </footer>
     
   </div>
@@ -143,27 +180,116 @@ export default {
   }
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Text:wght@100&family=Cabin+Sketch:wght@700&display=swap');
-#custom-logo {    
-  font-family: 'Big Shoulders Text', cursive;
+/* CUSTOM LOGO */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;800&display=swap');
+strong {
+  font-weight: bold;
+}
+#custom-logo {      
+  font-family: 'Montserrat Alternates', sans-serif;
   color: hsl(141, 53%, 53%);
   font-size: 2.5em;  
 }
 
-strong {
-  font-weight: 900;
+/* NAVBAR HOVER LINKS */
+#custom-hover:hover {
+  color: hsl(141, 53%, 53%);
 }
 
+/* NAVBAR FONT SIZE */
+button {
+  font-size: 1.2em;
+}
 .navbar-item {
   font-size: 1.2em;  
 }
 
-button {
-  font-size: 1.2em;
-}
- 
-#custom-footer {
-  background-color: #fff;
+/* CART BUTTON MARGIN */
+#custom-cart {
+  margin-right: 35px;
 }
 
+/* HTML HEIGHT TO FIX FOOTER */
+html { 
+  height: 100%; 
+}
+body { 
+  min-height: 100%; 
+  padding: 0;
+  margin: 0;
+  position: relative; 
+}
+body::after { 
+  content: ''; 
+  display: block; 
+  height: 240px; 
+}
+
+/* CUSTOM FOOTER */
+#custom-footer {       
+  position: absolute; 
+  bottom: 0; 
+  width: 100%; 
+  height: 240px;
+  padding: 0;
+  background-color: #000;
+}
+.custom-footer-wrapper {  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;  
+  background-color: #000;
+  padding: 0;
+  margin: 0;  
+}
+.custom-footer-box {  
+  background-color: #000;
+  color: #fff;    
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  font-size: 1em;
+}
+@media (min-width: 801px) {
+  .custom-footer-box:first-child {      
+    max-width: 680px;
+  }
+}
+@media (max-width: 900px) {
+  .custom-footer-box {
+    flex: 100%;
+  }
+}
+#custom-logo-footer {      
+  font-family: 'Montserrat Alternates', sans-serif;
+  color: hsl(141, 53%, 53%);
+  font-size: 2.5em;  
+}
+#custom-strong-footer {  
+  color: hsl(141, 53%, 53%);  
+}
+
+/* CUSTOM LINKS */
+#custom-link {
+  box-shadow: inset 0 -7px 0 #a0ffc1;
+  color: #000;
+}
+#custom-link:hover {
+  box-shadow: inset 0 -5px 0 #fff;
+  color: #48c774;
+}
+
+/* CUSTOM ROUTER-LINK */
+a.router-link-active {
+  color: #48c774;
+}
+a.router-link-exact-active {
+  color: #48c774;
+}
+.router-link-active a {
+  color: #48c774;
+}
+.router-link-exact-active a {
+  color: #48c774;
+}
 </style>

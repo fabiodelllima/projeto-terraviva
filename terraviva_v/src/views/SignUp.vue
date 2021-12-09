@@ -38,7 +38,7 @@
 
                     <hr>
 
-                    <router-link to="/log-in">Clique aqui</router-link> parar entrar!
+                    <router-link to="/log-in" id="custom-link">Clique aqui</router-link> para entrar!
                 </form>
             </div>
         </div>

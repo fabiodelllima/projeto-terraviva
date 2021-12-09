@@ -31,7 +31,7 @@
 
                     <hr>
 
-                    <router-link to="/sign-up">Clique aqui</router-link> para registrar.
+                    <router-link to="/sign-up" id="custom-link">Clique aqui</router-link> para registrar.
                 </form>
             </div>
         </div>
@@ -86,3 +86,13 @@ export default {
     }
 }
 </script>
+<style>
+    #custom-link {
+        box-shadow: inset 0 -7px 0 #a0ffc1;
+        color: #000;
+    }
+    #custom-link:hover {
+        box-shadow: inset 0 -5px 0 #fff;
+        color: #48c774;
+    }
+</style>
