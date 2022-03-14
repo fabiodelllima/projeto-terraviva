@@ -19,12 +19,12 @@
 
 <div align="center">
 
-| Pendencias  |       | 
-| :---        | :---: |
-| Revisão do `header`  | **OK** 
-| Revisão do `footer`  | 
-| Reposicionamento das imagens dos Produtos | 
-| Integração Django + Vue | 
-| README.md | 
+| Pendências                                |         | 
+| :---                                      |  :---:  |
+| Revisão do `header`                       | **OK**  | 
+| Revisão do `footer`                       |         |  
+| Reposicionamento das imagens dos Produtos |         |  
+| Integração Django + Vue                   |         |  
+| README.md                                 |         |  
 
 </div>
