@@ -1,4 +1,7 @@
-<h1 align="center"><code>coding4hope</code></h1>
+<h1 align="center">
+  <img src="https://i.imgur.com/LgZW5ym.png" width="500">
+</h1>
+
 <p align="center">
   Terra Viva é uma plataforma de e-commerce<br>desenvolvida para o projeto acadêmico Coding4Hope
 </p>
