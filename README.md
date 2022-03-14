@@ -1,4 +1,7 @@
 <h1 align="center"><code>coding4hope</code></h1>
+<p align="center">
+  Terra Viva é uma plataforma de e-commerce<br>desenvolvida para o projeto acadêmico Coding4Hope
+</p>
 
 <p align="center">  
   <img src="https://img.shields.io/badge/Django-323330?style=for-the-badge&logo=django&logoColor=white" />
@@ -10,3 +13,15 @@
   <br>
   <img src="https://img.shields.io/badge/Axios-323330?style=for-the-badge&logo=axios&logoColor=white" />  
 </p>
+
+<div align="center">
+
+| Pendencias  |       | 
+| :---        | :---: |
+| Revisão do `header`  | **OK** 
+| Revisão do `footer`  | [ x ]
+| Reposicionamento das imagens dos Produtos | [ x ]
+| Integração Django + Vue | [ x ]
+| README.md | [ x ]
+
+</div>
