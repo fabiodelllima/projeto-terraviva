@@ -1,5 +1,4 @@
 <h1 align="center"><code>coding4hope</code></h1>
-<p align="center">Projeto acadêmico em <s>construção</s> revisão</p>
 
 <p align="center">  
   <img src="https://img.shields.io/badge/Django-323330?style=for-the-badge&logo=django&logoColor=white" />
