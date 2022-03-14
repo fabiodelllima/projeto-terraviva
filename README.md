@@ -22,9 +22,9 @@
 | Pendencias  |       | 
 | :---        | :---: |
 | Revisão do `header`  | **OK** 
-| Revisão do `footer`  | [ x ]
-| Reposicionamento das imagens dos Produtos | [ x ]
-| Integração Django + Vue | [ x ]
-| README.md | [ x ]
+| Revisão do `footer`  | 
+| Reposicionamento das imagens dos Produtos | 
+| Integração Django + Vue | 
+| README.md | 
 
 </div>
