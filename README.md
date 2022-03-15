@@ -23,6 +23,7 @@
 | :---                                      |  :---:  |
 | Revisão do `header`                       | **OK**  | 
 | Revisão do `footer`                       | **X**   |  
+| Revisão das cores                         | **X**   |  
 | Reposicionamento das imagens dos Produtos | **X**   |  
 | Integração Django + Vue                   | **X**   |  
 | README.md                                 | **X**   |  
