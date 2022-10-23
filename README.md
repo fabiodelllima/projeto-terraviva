@@ -16,16 +16,3 @@
   <br>
   <img src="https://img.shields.io/badge/Axios-323330?style=for-the-badge&logo=axios&logoColor=white" />  
 </p>
-
-<div align="center">
-
-| Pendências                                |         | 
-| :---                                      |  :---:  |
-| Revisão do `header`                       | **OK**  | 
-| Revisão do `footer`                       | **X**   |  
-| Revisão das cores                         | **X**   |  
-| Reposicionamento das imagens dos Produtos | **X**   |  
-| Integração Django + Vue                   | **X**   |  
-| README.md                                 | **X**   |  
-
-</div>
