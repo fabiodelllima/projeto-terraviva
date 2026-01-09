@@ -11,14 +11,40 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ### Em Desenvolvimento
 
-- Configuração de env vars (SECRET_KEY, STRIPE_KEY)
 - Deploy backend em Render.com
 - Deploy frontend em Netlify
 - Deploy database em Supabase
 - Automação GitHub Actions (Supabase keep-alive)
-- Documentação ARCHITECTURE.md
 - Documentação BUSINESS_RULES.md
 - Documentação DEPLOYMENT.md
+
+---
+
+## [2.0.1] - 2026-01-09
+
+### Segurança
+
+- **CRÍTICO:** SECRET_KEY removida do código-fonte e movida para variável de ambiente
+- **CRÍTICO:** STRIPE_SECRET_KEY removida do código-fonte e movida para variável de ambiente
+- DEBUG agora configurável via ambiente (evita DEBUG=True em produção)
+- ALLOWED_HOSTS agora configurável via ambiente (evita host poisoning)
+- Configurados security headers para produção (XSS, CSRF, SSL)
+
+### Adicionado
+
+- python-dotenv para gerenciamento de variáveis de ambiente
+- .env.example como template de configuração
+- docs/ENVIRONMENT.md com guia de configuração
+
+### Modificado
+
+- Pillow: 10.4.0 => 12.1.0 (compatibilidade Python 3.14)
+- .gitignore atualizado para excluir arquivos .env
+
+### Removido
+
+- django-on-heroku (descontinuado)
+- Secrets hardcoded do settings.py
 
 ---
 
@@ -34,7 +60,9 @@ Início da **revitalização completa** do projeto após 4 anos sem manutenção
 
   - README.md reformulado com metodologia hierárquica
   - docs/ROADMAP.md com planejamento Fase 1, 2, 3
+  - docs/ARCHITECTURE.md com análise estrutural
   - CHANGELOG.md seguindo Keep a Changelog format
+  - LICENSE (MIT)
   - Estrutura docs/ criada
 
 - **Configuração Deploy Separado**
@@ -77,7 +105,7 @@ Início da **revitalização completa** do projeto após 4 anos sem manutenção
 
 - **Metodologia Desenvolvimento**
   - Git workflow: feature branch → develop → main
-  - Formato commits: `type(scope): Description` (inglês)
+  - Formato commits: `type(scope): Description`
   - Documentação: Docs-First approach
 
 ### Removido
@@ -96,11 +124,11 @@ Início da **revitalização completa** do projeto após 4 anos sem manutenção
 - 8 vulnerabilidades restantes: moderate severity, dev-only
   - postcss <8.4.31 (parsing error)
   - webpack-dev-server <=5.2.0 (source code theft via malicious site)
-- **CRÍTICO:** SECRET_KEY e STRIPE_KEY ainda hardcoded (resolver em Fase 1)
+- **CRÍTICO:** SECRET_KEY e STRIPE_KEY ainda hardcoded (resolvido em 2.0.1)
 
 ### Técnico
 
-- Branch atual: `chore/phase-1-restoration`
+- Branch: `chore/phase-1-restoration`
 - Database planejado: Supabase PostgreSQL (500MB free forever)
   - Automação: GitHub Actions ping a cada 5 dias (evita pause)
 - Backend deploy: Render.com (sleep 15min aceitável para portfólio)
@@ -188,5 +216,5 @@ PATCH: Correções de bugs compatíveis
 
 ---
 
-**Última atualização:** 07/01/2026  
-**Versão atual:** 2.0.0 (Revitalização)
+**Última atualização:** 09/01/2026  
+**Versão atual:** 2.0.1 (Security Fixes)
