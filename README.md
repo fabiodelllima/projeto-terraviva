@@ -511,22 +511,14 @@ Ver [docs/ROADMAP.md](docs/ROADMAP.md) para planejamento completo.
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
 
-## Você é livre para usar, copiar, modificar e distribuir este software para qualquer finalidade, inclusive comercial, desde que mantenha o aviso de copyright e a licença.
-
 ## Agradecimentos
 
 - **Coding4Hope:** Programa acadêmico que originou o projeto
 - **ONG Parceira:** Por confiar na solução proposta
 
----
-
-## Disclaimer
-
-Projeto independente para aprendizado e demonstração de habilidades em Full-Stack Development. Não há vínculo oficial com organizações mencionadas.
-
-**Stripe:** Utilizado em modo de teste (test keys). Nenhuma transação real é processada.
+<img src="https://i.imgur.com/LgZW5ym.png" width="500">
 
 ---
 
-**Última atualização em:** 07/01/2026  
-**Versão:** 2.0.0 Revitalização
+**Versão:** 2.0.0 Revitalização  
+**Última atualização em:** 09/01/2026
