@@ -20,7 +20,7 @@ itypes==1.2.0
 Jinja2==3.1.5
 MarkupSafe==3.0.2
 oauthlib==3.2.2
-Pillow==10.4.0
+Pillow==12.1.0
 psycopg2-binary==2.9.10
 pycparser==2.22
 PyJWT==2.10.1
@@ -36,3 +36,4 @@ stripe==11.3.0
 uritemplate==4.1.1
 urllib3==2.2.3
 whitenoise==6.8.2
+python-dotenv==1.0.0
