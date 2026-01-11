@@ -11,7 +11,6 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ### Em Desenvolvimento
 
-- Validação frontend em produção
 - Documentação BUSINESS_RULES.md
 - Documentação DEPLOYMENT.md
 
@@ -77,8 +76,8 @@ Implementação de armazenamento persistente de mídia via Supabase Storage, res
 
 ### Infraestrutura
 
-- **Backend:** Render.com (<https://terraviva-api-bg8s.onrender.com>)
-- **Frontend:** Vercel (<https://terraviva.vercel.app>)
+- **Backend:** Render.com (<https://terraviva-api-bg8s.onrender.com\>\)
+- **Frontend:** Vercel (<https://terraviva.vercel.app\>\)
 - **Database:** Supabase PostgreSQL (500MB free tier)
 - **Storage:** Supabase Storage (1GB free tier, CDN global)
 
