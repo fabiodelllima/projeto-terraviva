@@ -112,7 +112,6 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [BASE_DIR / "static"]
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media/"
@@ -154,3 +153,19 @@ CSRF_COOKIE_SECURE = not DEBUG
 
 # Base URL for API responses
 BASE_URL = os.environ.get("BASE_URL", "http://127.0.0.1:8000")
+
+# Supabase Storage Configuration
+SUPABASE_URL = os.environ.get("SUPABASE_URL", "")
+SUPABASE_SERVICE_KEY = os.environ.get("SUPABASE_SERVICE_KEY", "")
+SUPABASE_STORAGE_BUCKET = os.environ.get("SUPABASE_STORAGE_BUCKET", "media")
+
+# Use Supabase Storage for media files in production
+if SUPABASE_URL and SUPABASE_SERVICE_KEY:
+    STORAGES = {
+        "default": {
+            "BACKEND": "terraviva.storage.SupabaseStorage",
+        },
+        "staticfiles": {
+            "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        },
+    }
