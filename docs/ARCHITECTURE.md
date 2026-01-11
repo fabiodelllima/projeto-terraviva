@@ -87,10 +87,10 @@ projeto-terraviva/
 
 ### URLs de Produção
 
-| Serviço     | URL                                       |
-| ----------- | ----------------------------------------- |
-| Frontend    | <https://terraviva.vercel.app>            |
-| Backend API | <https://terraviva-api-bg8s.onrender.com> |
+| Serviço     | URL                                        |
+| ----------- | ------------------------------------------ |
+| Frontend    | <https://terraviva.vercel.app\>            |
+| Backend API | <https://terraviva-api-bg8s.onrender.com\> |
 
 ---
 
@@ -131,6 +131,15 @@ media/                          # Bucket Supabase
     ├── produto1_thumb.jpg
     └── ...
 ```
+
+### Limitações do Supabase Storage
+
+**Nomes de arquivo:** O Supabase Storage não aceita caracteres especiais (acentos, cedilha, etc.) em nomes de arquivo. Utilize apenas caracteres ASCII:
+
+- Correto: `maca.jpg`, `limao.jpg`, `acai.jpg`
+- Incorreto: `maçã.jpg`, `limão.jpg`, `açaí.jpg`
+
+O upload de arquivos com caracteres especiais resultará em erro `400 Bad Request: Invalid key`.
 
 ---
 
