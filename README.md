@@ -12,8 +12,8 @@ Plataforma de e-commerce full-stack desenvolvida para automatizar vendas de uma 
 
 **Links de Produção:**
 
-- **Frontend:** <https://terraviva.vercel.app>
-- **Backend API:** <https://terraviva-api-bg8s.onrender.com>
+- **Frontend:** <https://terraviva.vercel.app\>
+- **Backend API:** <https://terraviva-api-bg8s.onrender.com\>
 
 ---
 
@@ -227,7 +227,7 @@ GET    /api/v1/orders/               Histórico
 - [x] Database PostgreSQL (Supabase)
 - [x] Storage persistente (Supabase Storage)
 - [x] Django 5.2.10 (compatibilidade Python 3.14)
-- [ ] Validação end-to-end frontend
+- [x] Validação end-to-end frontend
 
 ### Fase 2: Modernização (Fev-Mar 2026)
 

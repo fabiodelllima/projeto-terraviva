@@ -15,6 +15,7 @@ Transformar projeto acadêmico de 2021 em portfólio profissional de produção 
 | Deploy funcional (back)   | CONCLUÍDO | CRÍTICO    |
 | Deploy funcional (front)  | CONCLUÍDO | CRÍTICO    |
 | Storage persistente       | CONCLUÍDO | CRÍTICO    |
+| Validação end-to-end      | CONCLUÍDO | CRÍTICO    |
 | Modernizar stack          | PARCIAL   | ALTO       |
 | Eliminar vulnerabilidades | PARCIAL   | ALTO       |
 | Implementar testes        | PENDENTE  | MÉDIO      |
@@ -38,7 +39,7 @@ Transformar projeto acadêmico de 2021 em portfólio profissional de produção 
 
 - [x] Vulnerabilidades críticas resolvidas (68 => 8)
 - [x] Deploy funcional (Vercel)
-- [ ] Validação end-to-end
+- [x] Validação end-to-end
 - [ ] Migração para Vite (Fase 2)
 - [ ] Testes automatizados (Fase 2)
 
@@ -52,7 +53,7 @@ Transformar projeto acadêmico de 2021 em portfólio profissional de produção 
 
 ---
 
-## Fase 1: Restauração - CONCLUÍDA
+## Fase 1: Restauração - CONCLUÍDA (100%)
 
 **Período:** Janeiro 2026
 
@@ -70,10 +71,7 @@ Transformar projeto acadêmico de 2021 em portfólio profissional de produção 
 - [x] Atualizar axios para usar env var
 - [x] Configurar vercel.json (SPA routing)
 - [x] Deploy Vercel
-
-### Pendente
-
-- [ ] Validação end-to-end (produtos não renderizam)
+- [x] Validação end-to-end
 
 ---
 
