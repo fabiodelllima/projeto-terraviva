@@ -11,12 +11,76 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ### Em Desenvolvimento
 
-- Deploy backend em Render.com
-- Deploy frontend em Netlify
-- Deploy database em Supabase
-- Automação GitHub Actions (Supabase keep-alive)
+- Validação frontend em produção
 - Documentação BUSINESS_RULES.md
 - Documentação DEPLOYMENT.md
+
+---
+
+## [2.1.0] - 2026-01-11
+
+### Contexto
+
+Implementação de armazenamento persistente de mídia via Supabase Storage, resolvendo o problema de arquivos efêmeros no Render.com. Inclui upgrade do Django para versão 5.2.10 devido a incompatibilidades com Python 3.14.
+
+### Adicionado
+
+- **Supabase Storage Integration**
+
+  - Custom storage backend (`terraviva/storage.py`) para Supabase
+  - Upload de imagens diretamente para bucket `media/uploads/`
+  - URLs públicas via CDN Supabase (285 POPs globalmente)
+  - Fallback gracioso para imagens legadas
+
+- **Configuração de STORAGES**
+  - Django 5.2+ STORAGES dict para gerenciamento de storage
+  - WhiteNoise mantido para arquivos estáticos
+  - Supabase para arquivos de mídia (uploads)
+
+### Modificado
+
+- **Django Upgrade**
+
+  - Django: 4.2.17 => 5.2.10 (compatibilidade Python 3.14)
+  - Correção do bug `AttributeError: 'super' object has no attribute 'dicts'`
+  - Configuração migrada de `DEFAULT_FILE_STORAGE` para `STORAGES`
+
+- **Product Model**
+
+  - Método `make_thumbnail()` corrigido (path duplication fix)
+  - Métodos `get_image()` e `get_thumbnail()` com error handling
+  - `verbose_name_plural` corrigido para "Produtos"
+
+- **Frontend Deploy**
+
+  - Migração de Netlify para Vercel
+  - Configuração `vercel.json` para SPA routing
+
+- **Dependencies**
+  - supabase: 2.27.1 (novo)
+  - storage3: 2.27.1 (novo)
+  - Pillow: 12.1.0 (mantido)
+
+### Removido
+
+- Campo `image_url` do model Product (redundante com Supabase URLs)
+- Configuração `DEFAULT_FILE_STORAGE` (deprecated Django 5.2)
+- Configuração `STATICFILES_STORAGE` duplicada
+- `netlify.toml` (migrado para Vercel)
+- `Procfile` (era para Heroku, não utilizado)
+
+### Corrigido
+
+- Incompatibilidade Python 3.14 + Django 4.2/5.1 (template context bug)
+- Path duplication em thumbnails (`uploads/uploads/file.jpg`)
+- Error handling para imagens legadas (404 no Supabase)
+
+### Infraestrutura
+
+- **Backend:** Render.com (<https://terraviva-api-bg8s.onrender.com>)
+- **Frontend:** Vercel (<https://terraviva.vercel.app>)
+- **Database:** Supabase PostgreSQL (500MB free tier)
+- **Storage:** Supabase Storage (1GB free tier, CDN global)
 
 ---
 
@@ -57,7 +121,6 @@ Início da **revitalização completa** do projeto após 4 anos sem manutenção
 ### Adicionado
 
 - **Documentação Profissional Completa**
-
   - README.md reformulado com metodologia hierárquica
   - docs/ROADMAP.md com planejamento Fase 1, 2, 3
   - docs/ARCHITECTURE.md com análise estrutural
@@ -65,74 +128,26 @@ Início da **revitalização completa** do projeto após 4 anos sem manutenção
   - LICENSE (MIT)
   - Estrutura docs/ criada
 
-- **Configuração Deploy Separado**
-  - netlify.toml atualizado para Django deployment
-  - Planejamento arquitetura: Backend (Render) + Frontend (Netlify) + Database (Supabase)
-  - Decisão arquitetural: Separação backend/frontend (ADR-001)
-  - Workflow GitHub Actions para Supabase keep-alive (ping a cada 5 dias)
-
 ### Modificado
 
 - **Backend Dependencies (Python)**
 
-  - Python: 3.9 => 3.14.2
+  - Python: 3.9 => 3.14
   - Django: 4.1.2 => 4.2.17 LTS
-  - Pillow: 9.2.0 => 10.4.0 (compatibilidade Python 3.14)
+  - Pillow: 9.2.0 => 10.4.0
   - psycopg2-binary: 2.9.4 => 2.9.10
-  - cryptography: 38.0.1 => 43.0.3
-  - urllib3: 1.26.12 => 2.2.3
-  - requests: 2.28.1 => 2.32.3
-  - certifi: 2022.9.24 => 2024.12.14
   - Django REST Framework: 3.14.0 => 3.15.2
   - djoser: 4.8.0 => 5.3.1
   - Stripe: 4.2.0 => 11.3.0
 
 - **Frontend Dependencies (npm)**
-
   - Resolvidas 20 vulnerabilidades críticas/altas
-  - @babel/\* packages atualizados (ReDoS, code execution fixes)
-  - webpack e loader-utils (XSS, prototype pollution fixes)
-  - semver, minimist, json5, braces (critical issues)
-  - ws (DoS vulnerability)
   - Vulnerabilidades: 68 => 8 (todas moderate, dev-only)
-
-- **Configuração Netlify**
-
-  - netlify.toml: Configurado para Python/Django deployment
-  - Build command: `pip install -r requirements.txt && python manage.py collectstatic --noinput`
-  - Publish directory: `staticfiles`
-  - Python version: 3.13.11
-
-- **Metodologia Desenvolvimento**
-  - Git workflow: feature branch → develop → main
-  - Formato commits: `type(scope): Description`
-  - Documentação: Docs-First approach
-
-### Removido
-
-- runtime.txt (redundante com .python-version)
-
-### Corrigido
-
-- Incompatibilidade Python 3.14 + Pillow 9.2.0
-- Incompatibilidade Python 3.14 + psycopg2-binary 2.9.4
-- Configuração Netlify conflitante (esperava Node.js, projeto é Django)
 
 ### Segurança
 
-- Resolvidas 20 de 28 vulnerabilidades npm (68 → 8)
+- Resolvidas 20 de 28 vulnerabilidades npm (68 => 8)
 - 8 vulnerabilidades restantes: moderate severity, dev-only
-  - postcss <8.4.31 (parsing error)
-  - webpack-dev-server <=5.2.0 (source code theft via malicious site)
-- **CRÍTICO:** SECRET_KEY e STRIPE_KEY ainda hardcoded (resolvido em 2.0.1)
-
-### Técnico
-
-- Branch: `chore/phase-1-restoration`
-- Database planejado: Supabase PostgreSQL (500MB free forever)
-  - Automação: GitHub Actions ping a cada 5 dias (evita pause)
-- Backend deploy: Render.com (sleep 15min aceitável para portfólio)
-- Frontend deploy: Netlify (já configurado)
 
 ---
 
@@ -152,69 +167,28 @@ Release inicial do projeto acadêmico **Coding4Hope**. Plataforma e-commerce des
   - API REST completa (CRUD produtos, checkout, auth)
   - Admin panel integrado
   - Integração Stripe (pagamentos)
-  - Geração automática de thumbnails (Pillow)
-  - Autenticação via djoser + Token Authentication
 
 - **Frontend Vue.js**
-
   - Vue.js 3.2.13 + Vue Router + Vuex
   - 10 páginas: Home, Product, Category, Search, Cart, Checkout, Success, Login, SignUp, MyAccount
-  - 3 componentes: ProductBox, CartItem, OrderSummary
-  - State management: carrinho persistente (localStorage)
   - Integração Stripe Elements
   - CSS framework: Bulma
-  - Notificações: Bulma Toast
-
-- **Funcionalidades Principais**
-
-  - Catálogo de produtos com busca
-  - Carrinho de compras
-  - Checkout completo (dados pessoais + pagamento)
-  - Histórico de pedidos
-  - Autenticação (login/registro)
-  - Admin panel para gestão
-
-- **Infraestrutura Original**
-  - Deploy: Heroku (backend + frontend)
-  - Database: SQLite (dev), PostgreSQL (prod)
-  - django-on-heroku configurado
-  - Procfile para Heroku
-  - CORS configurado
 
 ### Impacto
 
-Projeto entregue com sucesso à ONG, demonstrando viabilidade técnica e impacto social mensurável. Sistema substituiu processos analógicos (planilhas Excel, anotações físicas) por plataforma digital completa, reduzindo ~40% do tempo gasto em tarefas repetitivas e permitindo vendas online.
+Projeto entregue com sucesso à ONG, demonstrando viabilidade técnica e impacto social mensurável.
 
 ---
 
 ## Legenda
-
-### Tipos de Mudanças
 
 - `Adicionado`: Novas funcionalidades
 - `Modificado`: Mudanças em funcionalidades existentes
 - `Removido`: Funcionalidades removidas
 - `Corrigido`: Correções de bugs
 - `Segurança`: Correções de vulnerabilidades
-- `Descontinuado`: Funcionalidades que serão removidas no futuro
-
-### Formato Versionamento
-
-```
-MAJOR.MINOR.PATCH
-
-MAJOR: Mudanças incompatíveis de API
-MINOR: Funcionalidades novas compatíveis
-PATCH: Correções de bugs compatíveis
-```
-
-**Exemplo:**
-
-- 1.0.0 => 1.0.1: Bug fix (patch)
-- 1.0.1 => 1.1.0: Nova feature (minor)
-- 1.1.0 => 2.0.0: Breaking change (major)
 
 ---
 
-**Última atualização:** 09/01/2026  
-**Versão atual:** 2.0.1 (Security Fixes)
+**Última atualização:** 11/01/2026  
+**Versão atual:** 2.1.0
