@@ -1,0 +1,19 @@
+name: Supabase Keep-Alive
+
+on:
+  schedule:
+    # Executa a cada 5 dias às 03:00 UTC
+    - cron: '0 3 */5 * *'
+  workflow_dispatch: # Permite execução manual
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase Database
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          echo "[INFO] Executando query de keep-alive..."
+          psql "$DATABASE_URL" -c "SELECT 1 AS keepalive, NOW() AS timestamp;"
+          echo "[OK] Keep-alive concluido com sucesso"
